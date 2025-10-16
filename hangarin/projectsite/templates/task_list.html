@@ -80,8 +80,12 @@
                         <td>{{ object.priority }}</td>
                         <td>{{ object.category }}</td>
                         <td>
-                          <a href="task_list/{{ object.id }}" text=""><button type="button" class="btn btn-success">Edit</button></a>
-                          <a href="task_list/{{ object.id }}/delete"><button type="button" class="btn btn-danger">Delete</button></a>
+                          <a href="task_list/{{ object.id }}"title="Edit" class="text-primary">
+                            <i class="fas fa-edit"></i>&nbsp&nbsp&nbsp
+                          </a>
+                          <a href="task_list/{{ object.id }}/delete" title="Delete" class="text-danger">
+                            <i class="fas fa-trash"></i>
+                          </a>
                         </td>
                       </tr>
                       {% empty %}
