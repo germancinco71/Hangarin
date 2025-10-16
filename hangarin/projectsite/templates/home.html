@@ -1,0 +1,80 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<div class="pc-content">
+      <!-- [ breadcrumb ] start -->
+      <div class="page-header">
+        <div class="page-block">
+          <div class="row align-items-center">
+            <div class="col-md-12">
+              <div class="page-header-title">
+                <h4 class="m-b-10">Home</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- [ breadcrumb ] end -->
+      <!-- [ Main Content ] start -->
+       <div class="row">
+        <!-- [ sample-page ] start -->
+        <div class="col-md-6 col-xl-3">
+          <div class="card">
+            <div class="card-body">
+              <h6 class="mb-2 f-w-400 text-muted">Total Tasks</h6>
+              <h4 class="mb-3">{{total_tasks}}<span class="badge bg-light-primary border border-primary"><i
+                    class="ti ti-trending-up"></i><!-- text --></span></h4>
+              <p class="mb-0 text-muted text-sm">You have a total <span class="text-primary">{{total_tasks}}</span> tasks created
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-xl-3">
+          <div class="card">
+            <div class="card-body">
+              <h6 class="mb-2 f-w-400 text-muted">Total Subtasks</h6>
+              <h4 class="mb-3">{{total_subtasks}}<span class="badge bg-light-success border border-success"><i
+                    class="ti ti-trending-up"></i><!-- text --></span></h4>
+              <p class="mb-0 text-muted text-sm">You have extra <span class="text-success">{{total_subtasks}}</span> subtasks this year</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-xl-3">
+          <div class="card">
+            <div class="card-body">
+              <h6 class="mb-2 f-w-400 text-muted">Due Today</h6>
+              <h4 class="mb-3">{{due_today}}<span class="badge bg-light-warning border border-warning"><i
+                    class="ti ti-trending-down"></i><!-- text --></span></h4>
+              <p class="mb-0 text-muted text-sm">You have <span class="text-warning">{{due_today}}</span> task need to accomplish today</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-xl-3">
+          <div class="card">
+            <div class="card-body">
+              <h6 class="mb-2 f-w-400 text-muted">Missed Deadlines</h6>
+              <h4 class="mb-3">{{overdue}}<span class="badge bg-light-danger border border-danger"><i
+                    class="ti ti-trending-down"></i><!-- text --></span></h4>
+              <p class="mb-0 text-muted text-sm">You have missed <span class="text-danger">{{overdue}}</span> this year
+              </p>
+            </div>
+          </div>
+        </div>
+      <div class="row">
+        <!-- [ sample-page ] start -->
+        <div class="col-sm-12">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Home Page</div>
+              <div class="card-category">Sample Sample</div>
+            </div>
+            <div class="card-body">
+              <h5>Hello card</h5>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    
+    </div>
+
+{% endblock %}
