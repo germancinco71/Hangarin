@@ -1,0 +1,100 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="pc-content">
+      <!-- [ breadcrumb ] start -->
+      <div class="page-header">
+        <div class="page-block">
+          <div class="row align-items-center">
+            <div class="col-md-12">
+              <div class="page-header-title">
+                <h4 class="m-b-10">Home</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- [ breadcrumb ] end -->
+
+      <!-- [ Main Content ] start -->
+      <div class="row">
+        <!-- [ sample-page ] start -->
+        <div class="col-sm-12">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title"><h4>List of SubTasks</h4></div>
+              <div class="card-category"></div>
+            </div>
+            <br />
+                <div class="col-md-12 row">
+                  <div class="col-md-6">
+                    <form class="navbar-left navbar-form nav-search mr-md-3" action="{% url 'subtask-list' %}">
+                      <div class="datatable-search sm-12 ms-3">
+                          <input type="text" placeholder="Search here..." class="form-control" name="q"/>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="pull-right">
+                      <a href="{% url 'subtask-add' %}" class="btn btn-success">Add Subtask
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 sm-12 ms-4">
+                  <form method="get" class="row g-4 align-items-center">
+                    <div class="col-auto">
+                      <label for="smallSelect" class="col-form-label">Sort by</label>
+                    </div>
+                <div class="col-auto">
+                      <select class="form-select form-select-sm" id="smallSelect" name="sort_by">
+                        <option value="title" {% if request.GET.sort_by == "title" %}selected{% endif %}>Name</option>
+                        <option value="status" {% if request.GET.sort_by == "status" %}selected{% endif %}>Status</option>
+                      </select>
+                    </div>
+                    <div class="col-auto">
+                      <button type="submit" class="btn btn-primary btn-sm">Sort</button>
+                    </div>
+                  </form>
+                </div>
+            <div class="card-body">
+              <div class="card-body table-border-style">
+                <div class="table-responsive">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Main Task</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for object in object_list %}
+                      <tr>
+                        <td>{{ object.title }}</td>
+                        <td>{{ object.parent_task }}</td>
+                        <td>{{ object.status }}</td>
+                        <td>
+                          <a href="subtask_list/{{ object.id }}"><button type="button" class="btn btn-success">Edit</button></a>
+                          <a href="subtask_list/{{ object.id }}/delete"><button type="button" class="btn btn-danger">Delete</button></a>
+                        </td>
+                      </tr>
+                      {% empty %}
+                      <tr>
+                        <td colspan="4" style="text-align: center">
+                          <p class="text-sm font-weight-bold mb-0">No Records Found</p>
+                        </td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                  {% include 'includes/pagination.html' %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- [ sample-page ] end -->
+      </div>
+      <!-- [ Main Content ] end -->
+    </div>
+{% endblock %}
