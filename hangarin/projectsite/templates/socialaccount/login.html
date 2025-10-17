@@ -15,30 +15,54 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
-            background-color: #f8f9fc;
+            background-color: #eef2f7; /* soft neutral background like login */
         }
 
         .auth-card {
-            max-width: 500px;
+            width: 100%;
+            max-width: 420px;
             background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            padding: 2rem 2.5rem;
             text-align: center;
+        }
+
+        h3 {
+            font-weight: 600;
+        }
+
+        p {
+            color: #6c757d;
+        }
+
+        .btn-primary {
+            border-radius: 10px;
+            padding: 0.6rem;
+        }
+
+        .btn-outline-secondary {
+            border-radius: 10px;
+            padding: 0.6rem;
         }
     </style>
 </head>
 
 <body>
     <div class="auth-card">
-        <h3 class="mb-4">Confirm Sign In</h3>
-        <p class="mb-3">You are about to sign in using your <strong>{{ provider.name }}</strong> account.</p>
+        <h3 class="mb-3">Confirm Sign In</h3>
+        <p class="mb-4">You are about to sign in using your <strong>{{ provider.name }}</strong> account.</p>
+
         <form method="post">
             {% csrf_token %}
-            <button type="submit" class="btn btn-primary btn-block mb-3">Continue with {{ provider.name }}</button>
+            <button type="submit" class="btn btn-primary w-100 mb-3">
+                Continue with {{ provider.name }}
+            </button>
         </form>
-        <a href="{% url 'account_login' %}" class="btn btn-outline-secondary btn-block"> Cancel </a>
+
+        <a href="{% url 'account_login' %}" class="btn btn-outline-secondary w-100">
+            Cancel
+        </a>
     </div>
-</body>
 
 </html>
